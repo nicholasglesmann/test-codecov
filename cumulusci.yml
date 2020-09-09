@@ -51,7 +51,7 @@ tasks:
             command: force:source:deploy -p force-app
     
     my_dx_validate:
-        description: my custom deploy task
+        description: my custom validate task
         class_path: cumulusci.tasks.sfdx.SFDXOrgTask
         options:
             command: force:source:deploy -c -p force-app
