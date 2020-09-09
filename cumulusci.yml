@@ -43,7 +43,30 @@ tasks:
         options:
             path: robot/fondevhub/tests
             output: robot/fondevhub/doc/fondevhub_tests.html
+    
+    my_dx_deploy:
+        description: my custom deploy task
+        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
+        options:
+            command: force:source:deploy -p force-app
+    
+    my_dx_validate:
+        description: my custom deploy task
+        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
+        options:
+            command: force:source:deploy -c -p force-app
 
     run_tests:
         options:
             required_org_code_coverage_percent: 85
+
+flows:
+    my_deploy:
+        description: my custom deploy
+        steps:
+            0:
+                task: my_dx_validate
+#            1:
+#                task: install_sfdm
+#            2:
+#                task: run_sfdm   
