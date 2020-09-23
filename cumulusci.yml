@@ -1,8 +1,8 @@
 minimum_cumulusci_version: '3.16.0'
 project:
-    name: fondevhub
+    name: fondevtemplate
     package:
-        name: fondevhub
+        name: fondevtemplate
         api_version: '49.0'
     git:
     source_format: sfdx
@@ -44,28 +44,40 @@ tasks:
             path: robot/fondevhub/tests
             output: robot/fondevhub/doc/fondevhub_tests.html
     
-    my_dx_deploy:
-        description: my custom deploy task
+    sfdx_deploy_task:
+        description: SFDX deploy task
         class_path: cumulusci.tasks.sfdx.SFDXOrgTask
         options:
             command: force:source:deploy -p force-app
     
-    my_dx_validate:
-        description: my custom validate task
+    sfdx_validate_task:
+        description: SFDX validate task
         class_path: cumulusci.tasks.sfdx.SFDXOrgTask
         options:
             command: force:source:deploy -c -p force-app
+
+    install_sfdm:
+        description: Install Salesforce Data mover
+        class_path: cumulusci.tasks.command.Command
+        options:
+            command: echo y | sfdx plugins:install sfdmu --force
+
+    run_sfdm:
+        description: Run Salesforce Data mover
+        class_path: cumulusci.tasks.command.Command
+        options:
+            command: sfdx sfdmu:run --targetusername username@domain.com --sourceusername csvfile
 
     run_tests:
         options:
             required_org_code_coverage_percent: 85
 
 flows:
-    my_deploy:
-        description: my custom deploy
+    sfdx_deploy_flow:
+        description: SFDX source deploy
         steps:
             0:
-                task: my_dx_validate
+                task: sfdx_deploy_task
 #            1:
 #                task: install_sfdm
 #            2:
