@@ -1,4 +1,4 @@
-# fondevtemplate
+# Fonteva Development Template
 
 This is a template repo for future client customizmation development projects
 
@@ -39,3 +39,23 @@ To work on this project in a scratch org:
 2. Create a scratch org by either running the following command in VS Code:<br/>
 `SFDX: Create a Default Scratch Org...`<br/><br/>
 And selecting the `orgs/dev.json` configuration
+
+    OR, by running the follwing in the command line:<br/>
+    `sfdx force:org:create -f orgs/dev.json -d 16 -s`
+    <br/>
+    `-d {Number of days until Scrach Org Expires}`<br/>
+    `-s` Sets Scratch Org to become default org
+
+3. After your scratch org has been successfully created, push all of your code and configuration to your scratch org by either running the VS Code command:<br/>
+`SFDX: Push Source to Default Scratch Org`
+<br/><br/>
+OR by running the following in the command line:<br/>
+`sfdx force:source:push`
+
+4. Now you can either start your development directly in VS Code or login to your scratch org and perform configuration changes. If you perform changes directly in your org, make sure you pull your changes down by either running the VS Code command:<br/>
+`SFDX: Pull Source from Default Scratch Org`
+<br/><br/>
+OR running this in the command line:<br/>
+`sfdx force:source:pull`
+
+5. After you pull down your changes, Git / VS Code will detect these changes and display them
