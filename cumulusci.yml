@@ -8,23 +8,23 @@ project:
     source_format: sfdx
     dependencies:
         - namespace: Framework
-          version: 120.7
+          version: 120.7.12
         - namespace: PagesApi
-          version: 120.0
+          version: 120.1.2
         - namespace: KEYSTORE
           version: 120.0
         - namespace: OrderApi
-          version: 120.9
+          version: 121.1.8
         - namespace: EventApi
-          version: 121.0
+          version: 121.0.3
         - namespace: FDService
-          version: 121.2
+          version: 121.3
         - namespace: ROEApi
-          version: 120.1
+          version: 120.2.1
         - namespace: FDS19R2
-          version: 121.8
+          version: 122.9
         - namespace: LTE
-          version: 123.4
+          version: 124.3.6
         - namespace: FontevaCom
           version: 90.0
         - namespace: CPBase
