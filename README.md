@@ -59,7 +59,7 @@ OR running this in the command line:<br/>
 `sfdx force:source:pull`
 
 5. After you pull down your changes, Git / VS Code will detect these changes and display them:<br/>
-![Image of Yaktocat](img/vscode_git.png)<br/>
+![Image of VS Code](/img/vscode_git.png)<br/>
 You will commit these changes to your local `feature/{some_feature_name}` branch.
 
 6. Once you feel comfortable the code and configuration changes you have made, you will make a pull request against the `qa` branch in GitHub. The PR will have a template that you will fill out with the changes you want to merge. After the PR is merged by an administrator, it will trigger a deployment to a QA/Full Sandbox to verify the compilation and test method coverage
