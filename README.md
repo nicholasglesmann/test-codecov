@@ -63,3 +63,33 @@ OR running this in the command line:<br/>
 You will commit these changes to your local `feature/{some_feature_name}` branch.
 
 6. Once you feel comfortable the code and configuration changes you have made, you will make a pull request against the `qa` branch in GitHub. The PR will have a template that you will fill out with the changes you want to merge. After the PR is merged by an administrator, it will trigger a deployment to a QA/Full Sandbox to verify the compilation and test method coverage
+
+
+## CumulusCI Commands
+
+You can use CumulusCI to automate several parts of the development workflow.
+
+## Authorize an org
+
+First, authorize the org you want to use with CumulusCI:
+
+`cci org connect {orgName}`
+
+NOTE: Don't use any of the built-in names (beta, dev, feature, qa, release)
+
+## Run a CumulusCI Flow
+
+CumulusCI uses 'flows' to automate many processes. To see available flows, use: 
+
+`cci flow list`
+
+To inspect a specific flow, use:
+
+`cci flow info {flowName}`
+
+
+## Create a Scratch Org and Install all packages
+
+To create a scratch org with all dependencies installed, use:
+
+`cci flow run dev_org --org dev`
