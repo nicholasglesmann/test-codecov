@@ -83,8 +83,8 @@ flows:
     sfdx_deploy_flow:
         description: SFDX source deploy
         steps:
-            0:
-                task: run_local_tests
+            # 0:
+            #     task: run_local_tests
             1:
                 task: sfdx_deploy_task
 #            1:
