@@ -71,6 +71,7 @@ tasks:
     run_tests:
         options:
             required_org_code_coverage_percent: 85
+            managed: true
 
 flows:
     sfdx_deploy_flow:
