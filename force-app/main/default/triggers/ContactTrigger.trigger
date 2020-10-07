@@ -13,5 +13,6 @@ trigger ContactTrigger on Contact (before insert) {
     if (trigger.isUpdate) {
 
         System.debug('Updating Contacts.');
+        System.debug('Another small change...');
     }
 }
