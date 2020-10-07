@@ -73,12 +73,18 @@ tasks:
             required_org_code_coverage_percent: 85
             managed: true
 
+    run_local_tests:
+        description: SFDX Run Local Tests
+        class_path: cumulusci.tasks.sfdx.SFDXOrgTask
+        options:
+            command: force:apex:test:run -l RunLocalTests -r human
+
 flows:
     sfdx_deploy_flow:
         description: SFDX source deploy
         steps:
             0:
-                task: run_tests
+                task: run_local_tests
             1:
                 task: sfdx_deploy_task
 #            1:
