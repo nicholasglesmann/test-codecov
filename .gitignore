@@ -22,3 +22,6 @@ robot/fondevhub/results/
 
 # Misc
 .DS_Store
+
+# Unpackaged Salesforce Files
+unpackaged/
