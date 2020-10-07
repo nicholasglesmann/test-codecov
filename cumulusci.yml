@@ -48,7 +48,7 @@ tasks:
         description: SFDX deploy task
         class_path: cumulusci.tasks.sfdx.SFDXOrgTask
         options:
-            command: force:source:deploy -p force-app
+            command: force:source:deploy -p force-app -l RunLocalTests
     
     sfdx_validate_task:
         description: SFDX validate task
