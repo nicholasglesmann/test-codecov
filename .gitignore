@@ -24,4 +24,4 @@ robot/fondevhub/results/
 .DS_Store
 
 # Unpackaged Salesforce Files
-force-app/main/default/profiles/
+force-app/main/default/profiles
