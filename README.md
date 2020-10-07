@@ -93,3 +93,14 @@ To inspect a specific flow, use:
 To create a scratch org with all dependencies installed, use:
 
 `cci flow run dev_org --org dev`
+
+
+## Pulling code from Scratch Org
+
+After you finish a feature/bug fix, you will want to pull your code down from your Scratch Org to your local repo. You can use:
+
+`cci task run dx_pull`
+
+Sometimes there are conflicts between your local code and Scratch Org code. If you want to keep your Scratch Org code and overwrite your local code use:
+
+`cci task run dx_pull -o extra -f`
