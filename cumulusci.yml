@@ -77,6 +77,8 @@ flows:
         description: SFDX source deploy
         steps:
             0:
+                task: run_tests
+            1:
                 task: sfdx_deploy_task
 #            1:
 #                task: install_sfdm
