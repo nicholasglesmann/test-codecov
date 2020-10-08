@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Nicholas Glesmann
  * @group             : 
- * @last modified on  : 10-07-2020
+ * @last modified on  : 10-08-2020
  * @last modified by  : Nicholas Glesmann
  * Modifications Log 
  * Ver   Date         Author              Modification
@@ -13,6 +13,5 @@ trigger ContactTrigger on Contact (before insert) {
     if (trigger.isUpdate) {
 
         System.debug('Updating Contacts.');
-        System.debug('Another small change...');
     }
 }

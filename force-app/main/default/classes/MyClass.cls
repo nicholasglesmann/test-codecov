@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 10-07-2020
+ * @last modified on  : 10-08-2020
  * @last modified by  : Nicholas Glesmann
  * Modifications Log 
  * Ver   Date         Author                               Modification
@@ -12,6 +12,5 @@ public with sharing class MyClass {
     public static void myMethod()
     {
         System.debug('Hello World17');
-        System.debug('Making a small change...');
     }
 }
