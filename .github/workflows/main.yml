@@ -8,7 +8,7 @@ env:
 
 jobs:
   run-tests:
-    name: "Run SFDX Validate"
+    name: "Test Codecov"
     runs-on: ubuntu-latest
     container:
       image: salesforce/salesforcedx:latest
@@ -37,79 +37,79 @@ jobs:
           flags: Apex
 
 
-  sfdxvalidate:
-    name: "Run SFDX Validate"
-    runs-on: ubuntu-latest
-    container:
-      image: salesforce/salesforcedx:latest
-    # Skips this job if '[skip-ci]' is included in any commit message from this push
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
-    steps:
-    # Checks out a copy of your repository on the ubuntu-latest machine
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12'
-    - run: npm install
-    - name: Clean metadata
-      run: npm run packageXml
-    - name: Write Out JWT Key
-      shell: bash
-      run: |
-        echo "$SFDX_JWT_KEY" > jwt.key
-    - name: Set up auth
-      run: | 
-        sfdx force:auth:jwt:grant --jwtkeyfile jwt.key --username "${{ secrets.SFDX_USERNAME_PROD }}" --clientid $SFDX_CLIENTID -s
-    - name: Validate Source
-      run: sfdx force:source:deploy -l RunLocalTests -c -p force-app
+  # sfdxvalidate:
+  #   name: "Run SFDX Validate"
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: salesforce/salesforcedx:latest
+  #   # Skips this job if '[skip-ci]' is included in any commit message from this push
+  #   if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
+  #   steps:
+  #   # Checks out a copy of your repository on the ubuntu-latest machine
+  #   - uses: actions/checkout@v2
+  #   - uses: actions/setup-node@v1
+  #     with:
+  #       node-version: '12'
+  #   - run: npm install
+  #   - name: Clean metadata
+  #     run: npm run packageXml
+  #   - name: Write Out JWT Key
+  #     shell: bash
+  #     run: |
+  #       echo "$SFDX_JWT_KEY" > jwt.key
+  #   - name: Set up auth
+  #     run: | 
+  #       sfdx force:auth:jwt:grant --jwtkeyfile jwt.key --username "${{ secrets.SFDX_USERNAME_PROD }}" --clientid $SFDX_CLIENTID -s
+  #   - name: Validate Source
+  #     run: sfdx force:source:deploy -l RunLocalTests -c -p force-app
 
-  cliscannerbestpractices:
-    name: "CLI Scan for Best Practice Problems"
-    runs-on: ubuntu-latest
-    container:
-      image: salesforce/salesforcedx:latest
-    # Skips this job if '[skip-ci]' is included in any commit message from this push
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
-    steps:
-    # Checks out a copy of your repository on the ubuntu-latest machine
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install Salesforce CLI Scanner
-      run:  printf 'y\n' | sfdx plugins:install @salesforce/sfdx-scanner
-    - name: Run Salesforce CLI Scanner
-      run: sfdx scanner:run -v --target "force-app/main/default/classes/*.cls" -c "Best Practices"
+  # cliscannerbestpractices:
+  #   name: "CLI Scan for Best Practice Problems"
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: salesforce/salesforcedx:latest
+  #   # Skips this job if '[skip-ci]' is included in any commit message from this push
+  #   if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
+  #   steps:
+  #   # Checks out a copy of your repository on the ubuntu-latest machine
+  #   - name: Checkout code
+  #     uses: actions/checkout@v2
+  #   - name: Install Salesforce CLI Scanner
+  #     run:  printf 'y\n' | sfdx plugins:install @salesforce/sfdx-scanner
+  #   - name: Run Salesforce CLI Scanner
+  #     run: sfdx scanner:run -v --target "force-app/main/default/classes/*.cls" -c "Best Practices"
 
-  cliscannerperformance:
-    name: "CLI Scan for Performance Problems"
-    runs-on: ubuntu-latest
-    container:
-      image: salesforce/salesforcedx:latest
-    # Skips this job if '[skip-ci]' is included in any commit message from this push
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
-    steps:
-    # Checks out a copy of your repository on the ubuntu-latest machine
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install Salesforce CLI Scanner
-      run:  printf 'y\n' | sfdx plugins:install @salesforce/sfdx-scanner
-    - name: Run Salesforce CLI Scanner
-      run: sfdx scanner:run -v --target "force-app/main/default/classes/*.cls" -c "Performance"
+  # cliscannerperformance:
+  #   name: "CLI Scan for Performance Problems"
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: salesforce/salesforcedx:latest
+  #   # Skips this job if '[skip-ci]' is included in any commit message from this push
+  #   if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
+  #   steps:
+  #   # Checks out a copy of your repository on the ubuntu-latest machine
+  #   - name: Checkout code
+  #     uses: actions/checkout@v2
+  #   - name: Install Salesforce CLI Scanner
+  #     run:  printf 'y\n' | sfdx plugins:install @salesforce/sfdx-scanner
+  #   - name: Run Salesforce CLI Scanner
+  #     run: sfdx scanner:run -v --target "force-app/main/default/classes/*.cls" -c "Performance"
 
-  cliscannerall:
-    name: "CLI Scan for All Problems"
-    runs-on: ubuntu-latest
-    container:
-      image: salesforce/salesforcedx:latest
-    # Skips this job if '[skip-ci]' is included in any commit message from this push
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
-    steps:
-    # Checks out a copy of your repository on the ubuntu-latest machine
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install Salesforce CLI Scanner
-      run:  printf 'y\n' | sfdx plugins:install @salesforce/sfdx-scanner
-    - name: Run Salesforce CLI Scanner
-      run: sfdx scanner:run -v --target "force-app/main/default/classes/*.cls"
+  # cliscannerall:
+  #   name: "CLI Scan for All Problems"
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: salesforce/salesforcedx:latest
+  #   # Skips this job if '[skip-ci]' is included in any commit message from this push
+  #   if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
+  #   steps:
+  #   # Checks out a copy of your repository on the ubuntu-latest machine
+  #   - name: Checkout code
+  #     uses: actions/checkout@v2
+  #   - name: Install Salesforce CLI Scanner
+  #     run:  printf 'y\n' | sfdx plugins:install @salesforce/sfdx-scanner
+  #   - name: Run Salesforce CLI Scanner
+  #     run: sfdx scanner:run -v --target "force-app/main/default/classes/*.cls"
 
 
   # apexdocs:
