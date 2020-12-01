@@ -28,7 +28,7 @@ jobs:
       run: 'sfdx force:auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d'
 
     - name: 'Run Apex tests'
-      run: 'sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 -l RunLocalTests -u devhub'
+      run: 'sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 -u devhub'
 
     # Upload code coverage data
     - name: 'Upload code coverage for Apex to Codecov.io'
