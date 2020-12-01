@@ -5,7 +5,5 @@ public class MyClassTests {
         
         MyClass.myMethod();
         MyClass.myMethod2();
-        MyClass.myMethod3();
-        MyClass.myMethod4();
     }
 }
