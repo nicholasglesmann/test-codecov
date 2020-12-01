@@ -13,4 +13,19 @@ public with sharing class MyClass {
     {
         System.debug('Hello World17');
     }
+    
+    public static void myMethod2()
+    {
+        System.debug('Hello World17');
+    }
+
+    public static void myMethod3()
+    {
+        System.debug('Hello World17 ');
+    }
+
+    public static void myMethod4()
+    {
+        System.debug('Hello World17 ');
+    }
 }
