@@ -14,10 +14,10 @@ public class ContactTriggerTests {
     @isTest static void TestUpdateContact() {
 
         Contact c = new Contact(LastName = 'Test');
+        c.External_Id__c = '123456';
         Insert c;
 
         c.FirstName = 'Test';
-        c.External_ID__c = '123';
 
         Test.startTest();
         Update c;
