@@ -17,6 +17,7 @@ public class ContactTriggerTests {
         Insert c;
 
         c.FirstName = 'Test';
+        c.External_ID__c = '123';
 
         Test.startTest();
         Update c;
