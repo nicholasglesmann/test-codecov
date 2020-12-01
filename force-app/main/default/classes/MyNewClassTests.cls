@@ -20,6 +20,8 @@ public class MyNewClassTests {
         Integer actual = MyNewClass.Add(num1, num2);
         
         System.assertEquals(expected, actual); // Should pass
+
+        MyNewClass theClass = new MyNewClass();
     }
 
     

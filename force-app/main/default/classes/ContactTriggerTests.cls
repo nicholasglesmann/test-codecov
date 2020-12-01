@@ -13,8 +13,7 @@ public class ContactTriggerTests {
 
     @isTest static void TestUpdateContact() {
 
-        Contact c = new Contact(LastName = 'Test');
-        c.External_Id__c = '123456';
+        Contact c = new Contact(LastName = 'Test', External_Id__c = 'TestExternalId1');
         Insert c;
 
         c.FirstName = 'Test';
